@@ -26,8 +26,8 @@ class TerminalTest extends TestCase
 
     public function testSetPricing1()
     {
-        $data = ['ZA', 'YB', 'FC', 'GD', 'ZA', 'YB', 'ZA', 'ZA'];
-        $this->scanItems($data);
+        $items = ['ZA', 'YB', 'FC', 'GD', 'ZA', 'YB', 'ZA', 'ZA'];
+        $this->scanItems($items);
 
         $total = $this->terminal->getTotal();
 
@@ -36,8 +36,8 @@ class TerminalTest extends TestCase
 
     public function testSetPricing2()
     {
-        $data = ['FC', 'FC', 'FC', 'FC', 'FC', 'FC', 'FC'];
-        $this->scanItems($data);
+        $items = ['FC', 'FC', 'FC', 'FC', 'FC', 'FC', 'FC'];
+        $this->scanItems($items);
 
 
         $total = $this->terminal->getTotal();
@@ -47,8 +47,8 @@ class TerminalTest extends TestCase
 
     public function testSetPricing3()
     {
-        $data = ['ZA', 'YB', 'FC', 'GD'];
-        $this->scanItems($data);
+        $items = ['ZA', 'YB', 'FC', 'GD'];
+        $this->scanItems($items);
 
 
         $total = $this->terminal->getTotal();
@@ -56,9 +56,9 @@ class TerminalTest extends TestCase
         $this->assertEquals(15.40, $total);
     }
 
-    private function scanItems($data)
+    private function scanItems($items)
     {
-        foreach ($data as $item) {
+        foreach ($items as $item) {
             $this->terminal->scanItem($item);
         }
     }
