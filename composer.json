@@ -1,0 +1,47 @@
+{
+    "name": "nikita-yunoshev/terminal-service",
+    "description": "API that takes products in arbitrary order and return the correct final price.",
+    "authors": [
+        {
+            "name": "Nikita Yunoshev",
+            "email": "nikita.yunoshev@sigma.software"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^9",
+        "codedungeon/phpunit-result-printer": "^0.27.0",
+        "phpmd/phpmd" : "@stable",
+        "squizlabs/php_codesniffer": "3.*",
+        "phpstan/phpstan": "^0.12.25"
+    },
+    "scripts": {
+        "test": [
+            "php vendor/bin/phpunit tests"
+        ],
+        "phpcs": [
+            "bash -c 'vendor/bin/phpcs --standard=PSR2 --extensions=php --exclude=Generic.Files.LineEndings src'"
+        ],
+        "phpmd": [
+            "bash -c 'vendor/bin/phpmd src/ text unusedcode,cleancode,codesize,design,naming'"
+        ],
+        "phpstan": [
+            "vendor/bin/phpstan analyse src"
+        ],
+        "check": [
+            "@phpcs",
+            "@phpmd",
+            "@phpstan"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "TerminalService\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TerminalService\\Tests\\": "tests/"
+        }
+    }
+}
